@@ -1,50 +1,43 @@
-# Name of our action
 name: Release
-
-# The event that will trigger the action
 on:
   push:
-    branches: [main]
+    branches:
+      - main # or main
 
-# What the action will do
+permissions:
+  contents: read # for checkout
+
 jobs:
   release:
-    # The operating system it will run on
+    name: Release
     runs-on: ubuntu-latest
-    # This check prevents a publish loop with auto and GitHub Actions
-    # if: !contains(github.event.head_commit.message , 'ci skip') && !contains(github.event.head_commit.message, 'skip ci')
-    # The list of steps that the action will go through
+    permissions:
+      contents: write # to be able to publish a GitHub release
+      issues: write # to be able to comment on released issues
+      pull-requests: write # to be able to comment on released pull requests
+      id-token: write # to enable use of OIDC for npm provenance
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
-
-      - name: Prepare repository
-        run: git fetch --unshallow --tags
-
-      - name: Install Node.js
-        uses: actions/setup-node@v4
-
-      - uses: pnpm/action-setup@v4
-        name: Install pnpm
+        uses: actions/checkout@v3
         with:
-          run_install: false
+          fetch-depth: 0
 
-      - name: Get pnpm store directory
-        shell: bash
-        run: echo "STORE_PATH=$(pnpm store path --silent)" >> $GITHUB_ENV
-
-      - uses: actions/cache@v4
-        name: Setup pnpm cache
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
         with:
-          path: ${{ env.STORE_PATH }}
-          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-pnpm-store-
+          node-version: "lts/*"
+          cache: "pnpm" # Use pnpm-specific cache
+
+      - name: Install pnpm
+        run: npm install -g pnpm
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
-      - name: Create Release
+      - name: Verify the integrity of provenance attestations and registry signatures for installed dependencies
+        run: pnpm audit signatures
+
+      - name: Release
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: npx auto shipit
+        run: pnpm exec semantic-release
