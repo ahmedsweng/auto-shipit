@@ -1,3 +1,15 @@
+# v0.1.3 (Sat Nov 16 2024)
+
+#### 🐛 Bug Fix
+
+- fix: changes [#1](https://github.com/ahmedsweng/auto-shipit/pull/1) ([@ahmedsweng](https://github.com/ahmedsweng))
+
+#### Authors: 1
+
+- Ahmed Naoum ([@ahmedsweng](https://github.com/ahmedsweng))
+
+---
+
 # v0.1.2 (Sat Nov 16 2024)
 
 #### ⚠️ Pushed to `main`
