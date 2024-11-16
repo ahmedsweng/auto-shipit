@@ -1,3 +1,3 @@
 export default function Home() {
-  return <p></p>;
+  return <p>Woooow it is working wit semantic versionnign. Wooooooow!</p>;
 }
