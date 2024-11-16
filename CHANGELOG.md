@@ -1,3 +1,15 @@
+# v0.1.2 (Sat Nov 16 2024)
+
+#### ⚠️ Pushed to `main`
+
+- feat: updating page layout and remove styling ([@ahmedsweng](https://github.com/ahmedsweng))
+
+#### Authors: 1
+
+- Ahmed Naoum ([@ahmedsweng](https://github.com/ahmedsweng))
+
+---
+
 # v0.1.1 (Sat Nov 16 2024)
 
 #### ⚠️ Pushed to `main`
