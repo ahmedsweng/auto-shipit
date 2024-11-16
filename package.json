@@ -1,5 +1,9 @@
 {
   "name": "auto-shipit",
+  "author": {
+    "name": "ahmed",
+    "email": "raoufnaoum15@gmail.com"
+  },
   "version": "0.1.0",
   "private": true,
   "packageManager": "pnpm@9.13.2",
