@@ -1,3 +1,19 @@
+# v1.0.0 (Sat Nov 16 2024)
+
+#### 💥 Breaking Change
+
+- fix: remove coverage from .gitignore [#2](https://github.com/ahmedsweng/auto-shipit/pull/2) ([@ahmedsweng](https://github.com/ahmedsweng))
+
+#### 🐛 Bug Fix
+
+- BREAKING CHANGE: why it doesnt work [#3](https://github.com/ahmedsweng/auto-shipit/pull/3) ([@ahmedsweng](https://github.com/ahmedsweng))
+
+#### Authors: 1
+
+- Ahmed Naoum ([@ahmedsweng](https://github.com/ahmedsweng))
+
+---
+
 # v0.1.3 (Sat Nov 16 2024)
 
 #### 🐛 Bug Fix
